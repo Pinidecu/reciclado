@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Reciclado de Alimentos"
+version = "1.0.0"
+id = "artifacts/reciclado-alimentos"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18935
+
+[services.development]
+run = "pnpm --filter @workspace/reciclado-alimentos run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/reciclado-alimentos", "run", "build" ]
+publicDir = "artifacts/reciclado-alimentos/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18935"
+BASE_PATH = "/"

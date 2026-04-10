@@ -1,0 +1,863 @@
+Quiero que construyas una aplicación web MVP completa llamada provisionalmente “Reciclado de Alimentos”, orientada a conectar comercios con compradores para vender alimentos y productos próximos a vencerse o a perder valor comercial, pero que todavía sean aptos para el consumo humano.
+
+IMPORTANTE:
+- Debe ser un proyecto full-stack listo para correr en Replit.
+- Quiero que generes frontend, backend, base de datos, autenticación y estructura del proyecto.
+- Usa una arquitectura simple, prolija y mantenible.
+- El diseño visual debe estar inspirado en la web https://www.toogoodtogo.com/es en cuanto a estilo general, jerarquía visual, tono de impacto social, ahorro económico y sostenibilidad, PERO SIN COPIAR textos exactos, logos, marca, ilustraciones ni assets. Crea una identidad propia, moderna, amable, limpia y confiable.
+- El foco es MVP real, funcional y mostrable a comercios para validar interés.
+- Idioma principal de toda la web: español.
+- Moneda: pesos argentinos (ARS).
+- País inicial: Argentina.
+- Debe estar preparado para escalar en el futuro.
+
+==================================================
+1. STACK TECNOLÓGICO
+==================================================
+
+Usa este stack:
+
+Frontend:
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- React Hook Form
+- Zod para validaciones
+- TanStack Query para consumo de API
+- Leaflet + React Leaflet para mapa
+- Lucide React para íconos
+
+Backend:
+- Node.js
+- Express
+- TypeScript
+- Prisma ORM
+
+Base de datos:
+- PostgreSQL
+
+Autenticación:
+- JWT con refresh token simple
+- Passwords hasheadas con bcrypt
+
+Pagos:
+- Dejar integración preparada para Mercado Pago
+- Implementar estructura backend y frontend para iniciar pago
+- Si no se puede completar llave real, dejar mock bien documentado con endpoint preparado
+
+Subida de imágenes:
+- Para MVP, permitir usar URL de imagen
+- Dejar preparado para futura integración con Cloudinary
+
+QR:
+- Generar QR del comprobante de compra con un token único por orden
+- El comercio debe poder escanear o validar ese código manualmente desde su panel para cerrar la transacción
+
+==================================================
+2. OBJETIVO DEL NEGOCIO
+==================================================
+
+La plataforma conecta:
+
+A) Comercios
+- Cargan productos disponibles que están próximos a vencerse o a perder valor comercial
+- Publican nombre, foto, precio, cantidad, descripción y datos de retiro
+- Los productos aparecen disponibles por defecto
+- Pueden pausarlos, agotarlos o eliminarlos
+
+B) Compradores
+- Ven productos disponibles
+- Pueden filtrarlos
+- Pueden comprarlos online
+- Pagan en el momento
+- Luego retiran el producto en el comercio
+- Reciben un comprobante con QR
+
+Modelo de monetización:
+- Comisión baja al comercio por venta
+- Tasa de servicio baja al comprador
+- Ambos importes deben calcularse en cada orden
+
+==================================================
+3. IDENTIDAD VISUAL Y UX
+==================================================
+
+Crear una marca propia temporal con estilo:
+- Moderna
+- Sustentable
+- Cercana
+- Simple
+- Confiable
+- Tecnológica pero humana
+
+Paleta sugerida:
+- Verde/teal principal
+- Crema o beige muy claro para fondos suaves
+- Verde oscuro para textos principales
+- Naranja/coral suave para acentos
+- Blanco para tarjetas y superficies
+
+Estilo:
+- Hero potente con mensaje claro
+- Secciones visuales amplias
+- Tarjetas redondeadas
+- Sombras suaves
+- Íconos simples
+- Mucho aire visual
+- Mobile first
+- Excelente experiencia responsive
+
+No copiar textos exactos del sitio de referencia.
+Sí puedes usar una estructura parecida:
+- problema
+- beneficios
+- impacto ambiental
+- cómo funciona
+- CTA para registro
+
+==================================================
+4. PÁGINAS DEL SITIO
+==================================================
+
+Crear estas páginas públicas:
+
+4.1 Home (/)
+Debe incluir:
+
+- Navbar con logo temporal, links y botones:
+  - Inicio
+  - Cómo funciona
+  - Para comercios
+  - Para compradores
+  - Iniciar sesión
+  - Registrarse
+
+- Hero principal:
+  - Título potente sobre ahorrar dinero y reducir desperdicio alimentario
+  - Subtítulo claro
+  - CTA “Registrá tu comercio”
+  - CTA “Explorar productos”
+
+- Sección beneficios para comercios:
+  - Recuperar dinero de productos que iban a perderse
+  - Llegar a nuevos clientes
+  - Gestionar stock de forma simple
+  - Mostrar impacto positivo
+
+- Sección beneficios para compradores:
+  - Acceder a productos con descuento
+  - Encontrar oportunidades cerca
+  - Comprar fácil y retirar rápido
+  - Aportar al cuidado del ambiente
+
+- Sección impacto ambiental:
+  - Explicar brevemente cómo reducir desperdicio ayuda al planeta
+  - Mostrar estadísticas visuales mock:
+    - kg rescatados
+    - compras realizadas
+    - comercios adheridos
+    - CO2 evitado estimado
+
+- Sección “Cómo funciona” en 4 pasos:
+  1. El comercio publica productos
+  2. El comprador encuentra ofertas cercanas
+  3. Compra y paga online
+  4. Retira mostrando su QR
+
+- Sección CTA final para registro
+
+- Footer con:
+  - Sobre el proyecto
+  - Contacto
+  - Términos
+  - Privacidad
+
+4.2 Registro (/register)
+Pantalla donde el usuario elige tipo:
+- Quiero registrarme como comercio
+- Quiero registrarme como comprador
+
+4.3 Registro de comercio (/register/merchant)
+Campos:
+- Nombre del comercio
+- Razón social (opcional)
+- CUIT (opcional en MVP)
+- Rubro
+- Email
+- Teléfono
+- Dirección
+- Ciudad
+- Provincia
+- Código postal
+- Latitud
+- Longitud
+- Contraseña
+- Confirmar contraseña
+- Descripción breve
+- Horarios de retiro
+- Aceptar términos
+
+4.4 Registro de comprador (/register/buyer)
+Campos:
+- Nombre
+- Apellido
+- Email
+- Teléfono
+- Contraseña
+- Confirmar contraseña
+- Dirección opcional
+- Ciudad opcional
+- Provincia opcional
+- Latitud opcional
+- Longitud opcional
+- Aceptar términos
+
+4.5 Login (/login)
+- Email
+- Contraseña
+- Recordarme
+- Recuperar contraseña (aunque sea mock)
+- Opción cambiar entre comercio/comprador
+
+4.6 Catálogo productos (/products)
+Para compradores:
+- Buscador
+- Filtros
+- Listado de productos
+- Mapa opcional visible en desktop
+- Tarjetas con:
+  - Foto
+  - Nombre
+  - Comercio
+  - Precio original
+  - Precio actual
+  - % descuento
+  - Cantidad disponible
+  - Distancia estimada si el usuario dio ubicación
+  - Botón ver detalle
+
+4.7 Detalle producto (/products/:id)
+- Galería o foto
+- Nombre
+- Descripción
+- Comercio
+- Dirección de retiro
+- Precio original
+- Precio final
+- Tasa de servicio
+- Total estimado
+- Cantidad disponible
+- Fecha estimada de vencimiento o retiro recomendado
+- Mapa con ubicación
+- Selector de cantidad
+- Botón comprar
+
+4.8 Mapa de productos cercanos (/nearby)
+- Pedir ubicación del usuario
+- Mostrar mapa con marcadores
+- Lista sincronizada de productos cercanos
+- Filtros por radio:
+  - 1 km
+  - 3 km
+  - 5 km
+  - 10 km
+- Filtros por categoría y precio
+
+4.9 Checkout (/checkout/:productId)
+- Resumen del pedido
+- Cantidad
+- Subtotal
+- Tasa de servicio comprador
+- Total
+- Medio de pago
+- Botón pagar con Mercado Pago
+- Si no está configurado, usar modo mock claramente indicado
+
+4.10 Confirmación de compra (/orders/:id/success)
+- Mostrar comprobante
+- Estado de pago
+- QR único
+- Código de retiro
+- Datos del comercio
+- Dirección
+- Horario de retiro
+- Botón descargar comprobante
+- Botón ver mis compras
+
+4.11 Mis compras (/my-orders)
+Comprador puede ver:
+- Pendiente de pago
+- Pagada
+- Lista para retirar
+- Retirada
+- Cancelada
+Cada orden con QR y detalle
+
+==================================================
+5. PANEL DEL COMERCIO
+==================================================
+
+Crear panel privado para comercio en /merchant
+
+5.1 Dashboard
+Mostrar:
+- Total productos publicados
+- Productos activos
+- Productos agotados
+- Ventas del día
+- Ventas del mes
+- Dinero generado
+- Comisión acumulada plataforma
+- Órdenes pendientes de retiro
+- Órdenes entregadas
+
+5.2 Gestión de productos (/merchant/products)
+Tabla/listado con:
+- Foto
+- Nombre
+- Precio original
+- Precio actual
+- Cantidad
+- Estado
+- Fecha de vencimiento estimada
+- Destacado
+- Acciones editar / pausar / activar / eliminar
+
+5.3 Crear producto (/merchant/products/new)
+Campos:
+- Nombre
+- Descripción
+- Categoría
+- Foto URL
+- Precio original
+- Precio actual
+- Cantidad disponible
+- Unidad
+- Fecha de vencimiento estimada
+- Fecha límite de retiro
+- Dirección de retiro (autocompletar desde comercio, editable)
+- Latitud
+- Longitud
+- Estado inicial: disponible
+- Destacado
+- Publicado
+
+5.4 Editar producto
+Igual al formulario de alta
+
+5.5 Órdenes recibidas (/merchant/orders)
+Ver:
+- Número de orden
+- Cliente
+- Producto
+- Cantidad
+- Importe
+- Estado pago
+- Estado retiro
+- Fecha compra
+- Código QR
+- Acciones:
+  - Ver detalle
+  - Validar entrega
+  - Marcar como entregado
+  - Cancelar
+
+5.6 Validación de QR (/merchant/orders/scan)
+Pantalla para:
+- Ingresar código manual
+- Simular escaneo QR
+- Validar si la orden existe
+- Validar si está pagada
+- Validar si ya fue retirada
+- Botón “Confirmar entrega”
+Al confirmar:
+- cambia estado de la orden a entregada
+- cambia estado del retiro a completado
+- descuenta stock si no fue descontado antes
+- guarda fecha/hora de entrega
+
+5.7 Perfil del comercio (/merchant/profile)
+Editar:
+- Datos del comercio
+- Descripción
+- Dirección
+- Ubicación
+- Horarios
+- Foto/logo URL
+- Cuenta de Mercado Pago futura
+- Configuración de comisión visible
+
+==================================================
+6. PANEL DEL COMPRADOR
+==================================================
+
+Crear panel privado para comprador en /buyer
+
+Secciones:
+- Mis compras
+- Perfil
+- Ubicación guardada
+- Favoritos (aunque sea MVP simple)
+- Historial
+
+==================================================
+7. MODELO DE BASE DE DATOS
+==================================================
+
+Usar PostgreSQL con Prisma.
+
+Crear estas tablas con sus columnas:
+
+7.1 users
+- id (uuid, pk)
+- email (string, unique, required)
+- passwordHash (string, required)
+- role (enum: ADMIN, MERCHANT, BUYER)
+- isActive (boolean, default true)
+- emailVerified (boolean, default false)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+7.2 merchant_profiles
+- id (uuid, pk)
+- userId (uuid, unique, fk -> users.id)
+- businessName (string, required)
+- legalName (string, optional)
+- cuit (string, optional)
+- category (string, required)
+- description (text, optional)
+- phone (string, required)
+- addressLine (string, required)
+- city (string, required)
+- province (string, required)
+- postalCode (string, optional)
+- latitude (decimal, optional)
+- longitude (decimal, optional)
+- pickupHours (string, optional)
+- logoUrl (string, optional)
+- coverImageUrl (string, optional)
+- isVerified (boolean, default false)
+- isOpen (boolean, default true)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+7.3 buyer_profiles
+- id (uuid, pk)
+- userId (uuid, unique, fk -> users.id)
+- firstName (string, required)
+- lastName (string, required)
+- phone (string, required)
+- addressLine (string, optional)
+- city (string, optional)
+- province (string, optional)
+- postalCode (string, optional)
+- latitude (decimal, optional)
+- longitude (decimal, optional)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+7.4 product_categories
+- id (uuid, pk)
+- name (string, unique)
+- slug (string, unique)
+- icon (string, optional)
+- isActive (boolean, default true)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+Cargar seeds iniciales:
+- panadería
+- frutas y verduras
+- lácteos
+- almacén
+- comidas preparadas
+- bebidas
+- congelados
+- dietética
+- otros
+
+7.5 products
+- id (uuid, pk)
+- merchantId (uuid, fk -> merchant_profiles.id)
+- categoryId (uuid, fk -> product_categories.id)
+- name (string, required)
+- slug (string, unique)
+- description (text, optional)
+- imageUrl (string, optional)
+- originalPrice (decimal, required)
+- salePrice (decimal, required)
+- quantityAvailable (integer, required)
+- unit (string, optional) // unidad, kg, pack, bandeja, etc.
+- expiryDate (datetime, optional)
+- pickupDeadline (datetime, optional)
+- pickupAddress (string, optional)
+- pickupLatitude (decimal, optional)
+- pickupLongitude (decimal, optional)
+- status (enum: DRAFT, AVAILABLE, PAUSED, SOLD_OUT, EXPIRED, DELETED)
+- isFeatured (boolean, default false)
+- publishedAt (datetime, optional)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+7.6 product_images
+- id (uuid, pk)
+- productId (uuid, fk -> products.id)
+- imageUrl (string, required)
+- sortOrder (integer, default 0)
+- createdAt (datetime)
+
+7.7 favorites
+- id (uuid, pk)
+- buyerId (uuid, fk -> buyer_profiles.id)
+- productId (uuid, fk -> products.id)
+- createdAt (datetime)
+Restricción única:
+- unique(buyerId, productId)
+
+7.8 orders
+- id (uuid, pk)
+- orderNumber (string, unique, required)
+- buyerId (uuid, fk -> buyer_profiles.id)
+- merchantId (uuid, fk -> merchant_profiles.id)
+- subtotalAmount (decimal, required)
+- serviceFeeAmount (decimal, required)
+- merchantCommissionAmount (decimal, required)
+- totalAmount (decimal, required)
+- currency (string, default 'ARS')
+- paymentStatus (enum: PENDING, APPROVED, REJECTED, REFUNDED, CANCELLED)
+- fulfillmentStatus (enum: PENDING_PICKUP, READY_FOR_PICKUP, DELIVERED, CANCELLED, EXPIRED)
+- qrToken (string, unique, required)
+- pickupCode (string, optional)
+- purchasedAt (datetime, optional)
+- deliveredAt (datetime, optional)
+- cancelledAt (datetime, optional)
+- notes (text, optional)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+7.9 order_items
+- id (uuid, pk)
+- orderId (uuid, fk -> orders.id)
+- productId (uuid, fk -> products.id)
+- productNameSnapshot (string, required)
+- unitPriceSnapshot (decimal, required)
+- quantity (integer, required)
+- lineSubtotal (decimal, required)
+- createdAt (datetime)
+
+7.10 payments
+- id (uuid, pk)
+- orderId (uuid, unique, fk -> orders.id)
+- provider (enum: MERCADO_PAGO, MOCK)
+- providerPaymentId (string, optional)
+- providerPreferenceId (string, optional)
+- amount (decimal, required)
+- currency (string, default 'ARS')
+- status (enum: PENDING, APPROVED, REJECTED, CANCELLED, REFUNDED)
+- rawResponseJson (json, optional)
+- paidAt (datetime, optional)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+7.11 qr_scans
+- id (uuid, pk)
+- orderId (uuid, fk -> orders.id)
+- merchantId (uuid, fk -> merchant_profiles.id)
+- scannedByUserId (uuid, fk -> users.id)
+- scanResult (enum: VALID, INVALID, ALREADY_USED, NOT_PAID, ORDER_NOT_FOUND)
+- createdAt (datetime)
+
+7.12 sessions_refresh_tokens
+- id (uuid, pk)
+- userId (uuid, fk -> users.id)
+- token (string, unique)
+- expiresAt (datetime)
+- createdAt (datetime)
+- revokedAt (datetime, optional)
+
+7.13 app_settings
+- id (uuid, pk)
+- serviceFeePercentageBuyer (decimal, default 5.00)
+- merchantCommissionPercentage (decimal, default 5.00)
+- supportEmail (string, optional)
+- supportWhatsapp (string, optional)
+- createdAt (datetime)
+- updatedAt (datetime)
+
+7.14 audit_logs
+- id (uuid, pk)
+- userId (uuid, optional)
+- entityType (string)
+- entityId (string)
+- action (string)
+- metadataJson (json, optional)
+- createdAt (datetime)
+
+==================================================
+8. REGLAS DE NEGOCIO
+==================================================
+
+Implementar estas reglas:
+
+- Solo comercios pueden crear, editar, pausar y eliminar sus productos
+- Solo compradores pueden comprar
+- Un producto solo se muestra al público si:
+  - status = AVAILABLE
+  - quantityAvailable > 0
+- Si quantityAvailable llega a 0:
+  - status pasa a SOLD_OUT
+- No permitir compra de cantidad mayor al stock
+- En checkout calcular:
+  subtotal = salePrice * cantidad
+  serviceFee = subtotal * porcentaje comprador
+  merchantCommission = subtotal * porcentaje comercio
+  total = subtotal + serviceFee
+- La comisión del comercio no se suma al comprador, se descuenta como métrica de liquidación
+- Al aprobar el pago:
+  - crear orden
+  - crear payment
+  - generar qrToken
+  - generar pickupCode de 6 caracteres
+  - marcar fulfillmentStatus como READY_FOR_PICKUP
+- Al entregar el producto con QR válido:
+  - fulfillmentStatus = DELIVERED
+  - deliveredAt = fecha actual
+- Si una orden ya fue entregada y se intenta validar otra vez:
+  - responder ALREADY_USED
+- Si la orden no está pagada:
+  - no permitir entrega
+- Si el producto vence o pasa pickupDeadline:
+  - permitir marcarlo como EXPIRED mediante proceso simple o validación en backend
+
+==================================================
+9. API BACKEND
+==================================================
+
+Crear API REST bien organizada.
+
+9.1 Auth
+POST /api/auth/register/merchant
+POST /api/auth/register/buyer
+POST /api/auth/login
+POST /api/auth/refresh
+POST /api/auth/logout
+GET /api/auth/me
+
+9.2 Public
+GET /api/products
+GET /api/products/:id
+GET /api/products/nearby?lat=&lng=&radius=
+GET /api/categories
+GET /api/merchants/:id/public
+
+9.3 Buyer
+GET /api/buyer/profile
+PUT /api/buyer/profile
+GET /api/buyer/orders
+GET /api/buyer/orders/:id
+POST /api/buyer/favorites/:productId
+DELETE /api/buyer/favorites/:productId
+
+9.4 Merchant
+GET /api/merchant/dashboard
+GET /api/merchant/profile
+PUT /api/merchant/profile
+GET /api/merchant/products
+POST /api/merchant/products
+GET /api/merchant/products/:id
+PUT /api/merchant/products/:id
+PATCH /api/merchant/products/:id/status
+DELETE /api/merchant/products/:id
+GET /api/merchant/orders
+GET /api/merchant/orders/:id
+POST /api/merchant/orders/validate-qr
+POST /api/merchant/orders/:id/mark-delivered
+
+9.5 Checkout / Payments
+POST /api/checkout/create-order
+POST /api/payments/mercadopago/create-preference
+POST /api/payments/mercadopago/webhook
+GET /api/payments/:orderId/status
+
+==================================================
+10. FILTROS Y BÚSQUEDAS
+==================================================
+
+En listado de productos implementar:
+- búsqueda por texto
+- filtro por categoría
+- filtro por ciudad
+- filtro por rango de precio
+- filtro solo destacados
+- orden por:
+  - menor precio
+  - mayor descuento
+  - cercanía
+  - más recientes
+
+Si hay lat/lng del usuario:
+- calcular distancia aproximada
+- ordenar por cercanía si corresponde
+
+==================================================
+11. MAPA Y UBICACIÓN
+==================================================
+
+Implementar:
+- solicitud de geolocalización del navegador
+- mapa Leaflet
+- marcadores por producto
+- popup con nombre, precio y botón ver detalle
+- en backend o frontend calcular distancia con fórmula haversine
+- si el usuario no acepta ubicación, igual debe poder usar el catálogo normal
+
+==================================================
+12. MERCADO PAGO
+==================================================
+
+Preparar integración real, pero si falta credencial:
+- dejar modo mock
+- usar variable de entorno:
+  MERCADO_PAGO_ACCESS_TOKEN
+- crear servicio desacoplado
+- documentar dónde poner credenciales
+- dejar webhook preparado
+
+==================================================
+13. QR Y COMPROBANTE
+==================================================
+
+Para cada orden aprobada:
+- generar qrToken único
+- mostrar QR en frontend
+- mostrar número de orden
+- mostrar pickupCode
+- permitir validación por:
+  - qrToken
+  - orderNumber + pickupCode
+
+==================================================
+14. DATOS DE PRUEBA / SEED
+==================================================
+
+Crear seed inicial con:
+- 1 admin
+- 2 comercios
+- 1 comprador
+- 8 categorías
+- 10 productos de ejemplo distribuidos en distintos comercios
+- algunas órdenes de ejemplo en distintos estados
+
+==================================================
+15. SEGURIDAD Y VALIDACIONES
+==================================================
+
+Implementar:
+- validación Zod en frontend y backend
+- middleware auth
+- middleware role-based
+- sanitización básica
+- manejo de errores centralizado
+- respuestas JSON consistentes
+- no exponer datos sensibles
+- contraseñas hasheadas
+- JWT access token + refresh token
+
+==================================================
+16. ESTRUCTURA DEL FRONTEND
+==================================================
+
+Crear layout y componentes reutilizables:
+
+Componentes sugeridos:
+- Navbar
+- Footer
+- HeroSection
+- SectionTitle
+- BenefitCard
+- ProductCard
+- ProductFilters
+- ProductMap
+- MerchantDashboardCards
+- OrderStatusBadge
+- PriceTag
+- EmptyState
+- LoadingSpinner
+- AuthForm
+- QRDisplay
+- StatsSection
+- HowItWorks
+- CTASection
+
+==================================================
+17. ESTRUCTURA DEL PROYECTO
+==================================================
+
+Quiero carpetas claras:
+- client/
+- server/
+- prisma/
+- shared/ si hace falta
+
+En el resultado final:
+- generar código
+- generar schema Prisma
+- generar seeds
+- generar endpoints
+- generar pantallas
+- generar componentes base
+- generar estilos
+- generar variables de entorno de ejemplo
+- generar README con pasos para correr el proyecto en Replit
+
+==================================================
+18. README
+==================================================
+
+Incluir:
+- descripción del proyecto
+- stack
+- variables de entorno
+- cómo correr frontend y backend
+- cómo ejecutar migraciones
+- cómo seedear datos
+- cómo probar login
+- cómo activar modo mock de Mercado Pago
+
+==================================================
+19. CRITERIOS DE CALIDAD
+==================================================
+
+Quiero que el resultado:
+- compile
+- sea consistente
+- tenga código limpio
+- tenga tipado correcto
+- no use datos hardcodeados innecesarios
+- tenga diseño atractivo
+- se vea profesional para mostrar a comercios
+- esté listo para continuar iterando
+
+==================================================
+20. ORDEN DE TRABAJO
+==================================================
+
+Genera el proyecto en este orden:
+1. estructura
+2. prisma schema
+3. backend base
+4. auth
+5. seeds
+6. frontend público
+7. panel comercio
+8. panel comprador
+9. mapa
+10. checkout
+11. qr
+12. README
+
+Si alguna integración externa no puede quedar 100% operativa en el entorno actual, deja implementado el flujo mock funcional y documentado.
+
+Empieza ahora generando toda la base del proyecto y el código necesario.
