@@ -14,7 +14,7 @@ export function Footer() {
               <span className="font-serif text-xl font-bold">Rescaté</span>
             </div>
             <p className="text-background/60 text-sm max-w-sm">
-              Conectamos comercios con compradores para recuperar el valor de productos que estaban destinados al desperdicio. Argentina, 2025.
+              26Conectamos comercios con compradores para recuperar el valor de productos que estaban destinados al desperdicio. Argentina, 2025.
             </p>
           </div>
 
