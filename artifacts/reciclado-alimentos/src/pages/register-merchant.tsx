@@ -116,14 +116,6 @@ export default function RegisterMerchantPage() {
                 {form.formState.errors.businessName && <p className="text-destructive text-xs mt-1">{form.formState.errors.businessName.message}</p>}
               </div>
               <div>
-                <Label>Razón social</Label>
-                <Input {...form.register("legalName")} placeholder="Opcional" data-testid="input-legalName" className="mt-1.5" />
-              </div>
-              <div>
-                <Label>CUIT</Label>
-                <Input {...form.register("cuit")} placeholder="XX-XXXXXXXX-X" data-testid="input-cuit" className="mt-1.5" />
-              </div>
-              <div>
                 <Label>Rubro *</Label>
                 <select {...form.register("category")} data-testid="select-category" className="mt-1.5 w-full border border-input rounded-lg px-3 py-2 text-sm bg-background">
                   <option value="">Seleccionar...</option>

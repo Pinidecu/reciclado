@@ -17,9 +17,6 @@ const schema = z.object({
   lastName: z.string().min(2, "El apellido es requerido"),
   email: z.string().email("Email inválido"),
   phone: z.string().min(6, "El teléfono es requerido"),
-  addressLine: z.string().optional(),
-  city: z.string().optional(),
-  province: z.string().optional(),
   password: z.string().min(6, "Mínimo 6 caracteres"),
   confirmPassword: z.string(),
   terms: z.boolean().refine(v => v, "Debés aceptar los términos"),
@@ -41,8 +38,7 @@ export default function RegisterBuyerPage() {
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
-      firstName: "", lastName: "", email: "", phone: "",
-      addressLine: "", city: "", province: "",
+      firstName: "", lastName: "", email: "", phone: "", 
       password: "", confirmPassword: "", terms: false,
     },
   });
@@ -55,10 +51,7 @@ export default function RegisterBuyerPage() {
           password: data.password,
           firstName: data.firstName,
           lastName: data.lastName,
-          phone: data.phone,
-          addressLine: data.addressLine || null,
-          city: data.city || null,
-          province: data.province || null,
+          phone: data.phone, 
         },
       },
       {
@@ -118,7 +111,7 @@ export default function RegisterBuyerPage() {
               {form.formState.errors.phone && <p className="text-destructive text-xs mt-1">{form.formState.errors.phone.message}</p>}
             </div>
 
-            <div className="pt-2 border-t border-border">
+            {/* <div className="pt-2 border-t border-border">
               <p className="text-xs text-muted-foreground mb-3">Ubicación (opcional, para mostrar comercios cercanos)</p>
               <div>
                 <Label>Dirección</Label>
@@ -137,7 +130,7 @@ export default function RegisterBuyerPage() {
                   </select>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="grid grid-cols-2 gap-4 pt-2 border-t border-border">
               <div>

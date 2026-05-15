@@ -81,8 +81,8 @@ export default function HomePage() {
       <section className="bg-card border-y border-border py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <StatCard
-              value={stats ? `${stats.kgRescued.toFixed(0)} kg` : "0 kg"}
+            <StatCard 
+              value={stats?.kgRescued != null ? `${stats.kgRescued.toFixed(0)} kg` : "0 kg"}
               label="Alimentos rescatados"
               sublabel="de la basura"
             />
@@ -96,8 +96,8 @@ export default function HomePage() {
               label="Comercios adheridos"
               sublabel="en Argentina"
             />
-            <StatCard
-              value={stats ? `${stats.co2Avoided.toFixed(1)} kg` : "0 kg"}
+            <StatCard 
+              value={stats?.co2Avoided != null ? `${stats.co2Avoided.toFixed(0)} kg` : "0 kg"}
               label="CO₂ evitado"
               sublabel="estimado"
             />
@@ -236,7 +236,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
             <div className="bg-white rounded-2xl p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-primary">{stats ? `${stats.kgRescued.toFixed(0)}` : "0"}</div>
+              <div className="text-3xl font-bold text-primary">{stats ? `${stats.kgRescued?.toFixed(0)}` : "0"}</div>
               <div className="text-xs text-muted-foreground mt-1">kg rescatados</div>
             </div>
             <div className="bg-white rounded-2xl p-5 text-center shadow-sm">
@@ -248,7 +248,7 @@ export default function HomePage() {
               <div className="text-xs text-muted-foreground mt-1">comercios</div>
             </div>
             <div className="bg-white rounded-2xl p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-primary">{stats ? `${stats.co2Avoided.toFixed(1)}` : "0"}</div>
+              <div className="text-3xl font-bold text-primary">{stats ? `${stats.co2Avoided?.toFixed(1)}` : "0"}</div>
               <div className="text-xs text-muted-foreground mt-1">kg CO₂ evitado</div>
             </div>
           </div>

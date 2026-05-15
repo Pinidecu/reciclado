@@ -8,12 +8,6 @@ export const buyerProfilesTable = pgTable("buyer_profiles", {
   firstName: text("first_name").notNull(),
   lastName: text("last_name").notNull(),
   phone: text("phone").notNull(),
-  addressLine: text("address_line"),
-  city: text("city"),
-  province: text("province"),
-  postalCode: text("postal_code"),
-  latitude: decimal("latitude", { precision: 10, scale: 7 }),
-  longitude: decimal("longitude", { precision: 10, scale: 7 }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow().$onUpdate(() => new Date()),
 });

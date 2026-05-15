@@ -73,7 +73,8 @@ export default function ProductsPage() {
 
         {categories && categories.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-8">
-            {categories.map(cat => (
+            {Array.isArray(categories) &&
+  categories.map((cat) => (
               <Badge
                 key={cat.id}
                 variant={selectedCategory === cat.id ? "default" : "outline"}
@@ -113,7 +114,7 @@ export default function ProductsPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {data?.products.map(p => (
+              {data?.products?.map(p => (
                 <ProductCard key={p.id} product={p} />
               ))}
             </div>

@@ -5,9 +5,7 @@ import { z } from "zod/v4";
 export const merchantProfilesTable = pgTable("merchant_profiles", {
   id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
   userId: text("user_id").notNull().unique(),
-  businessName: text("business_name").notNull(),
-  legalName: text("legal_name"),
-  cuit: text("cuit"),
+  businessName: text("business_name").notNull(), 
   category: text("category").notNull(),
   description: text("description"),
   phone: text("phone").notNull(),
