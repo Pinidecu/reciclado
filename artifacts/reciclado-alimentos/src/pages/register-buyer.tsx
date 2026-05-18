@@ -31,6 +31,7 @@ const PROVINCES = ["Buenos Aires", "CABA", "Catamarca", "Chaco", "Chubut", "Cór
 
 export default function RegisterBuyerPage() {
   const [, setLocation] = useLocation();
+ 
   const { login } = useAuth();
   const { toast } = useToast();
   const registerMutation = useRegisterBuyer();
@@ -42,6 +43,8 @@ export default function RegisterBuyerPage() {
       password: "", confirmPassword: "", terms: false,
     },
   });
+
+  
 
   const onSubmit = (data: FormData) => {
     registerMutation.mutate(

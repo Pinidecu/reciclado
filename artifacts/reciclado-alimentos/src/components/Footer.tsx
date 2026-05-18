@@ -3,7 +3,7 @@ import { Leaf } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background py-12 mt-16">
+    <footer className="bg-foreground text-background py-12  ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -14,7 +14,7 @@ export function Footer() {
               <span className="font-serif text-xl font-bold">Rescaté</span>
             </div>
             <p className="text-background/60 text-sm max-w-sm">
-              26Conectamos comercios con compradores para recuperar el valor de productos que estaban destinados al desperdicio. Argentina, 2025.
+              Conectamos comercios con compradores para recuperar el valor de productos que estaban destinados al desperdicio.
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-background/10 mt-8 pt-6 text-center text-background/40 text-xs">
-          © 2025 Rescaté — Menos desperdicio. Más ahorro. Argentina.
+          © 2026 Rescaté — Menos desperdicio. Más ahorro. Argentina.
         </div>
       </div>
     </footer>

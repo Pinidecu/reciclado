@@ -8,6 +8,8 @@ import { formatProduct } from "./products.js";
 import { formatOrder } from "./orders.js";
 
 const router = Router();
+console.log("MERCHANT ROUTES LOADED");
+
 
 router.get("/merchant/profile", authenticate, requireRole("MERCHANT"), async (req, res): Promise<void> => {
   const [merchant] = await db.select().from(merchantProfilesTable).where(eq(merchantProfilesTable.userId, req.user!.userId)).limit(1);
@@ -195,5 +197,20 @@ router.get("/merchant/stats", authenticate, requireRole("MERCHANT"), async (req,
     platformCommission: revenueMonth * MERCHANT_FEE_RATE,
   });
 });
+
+
+router.get("/merchants", async (req, res): Promise<void> => {
+  try {
+    const merchants = await db
+      .select()
+      .from(merchantProfilesTable)
+      .orderBy(merchantProfilesTable.businessName);
+
+    res.json(merchants.map(formatMerchant));
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener comercios" });
+  }
+});
+
 
 export default router;

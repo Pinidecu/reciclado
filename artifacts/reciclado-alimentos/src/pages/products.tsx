@@ -82,7 +82,7 @@ export default function ProductsPage() {
                 onClick={() => handleCategoryToggle(cat.id)}
                 data-testid={`badge-category-${cat.slug}`}
               >
-                {cat.icon && <span className="mr-1">{cat.icon}</span>}
+                {/* {cat.icon && <span className="mr-1">{cat.icon}</span>} */}
                 {cat.name}
               </Badge>
             ))}

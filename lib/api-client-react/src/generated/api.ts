@@ -592,6 +592,77 @@ export type ListProductsQueryResult = NonNullable<
 >;
 export type ListProductsQueryError = ErrorType<unknown>;
 
+
+/**
+ * @summary List all merchants
+ */
+export const getListMerchantsUrl = () => {
+  return `/api/merchants`;
+};
+
+export const listMerchants = async (
+  options?: RequestInit,
+): Promise<MerchantProfile[]> => {
+  return customFetch<MerchantProfile[]>(getListMerchantsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getListMerchantsQueryKey = () => {
+  return [`/api/merchants`] as const;
+};
+
+export const getListMerchantsQueryOptions = <
+  TData = Awaited<ReturnType<typeof listMerchants>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listMerchants>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getListMerchantsQueryKey();
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof listMerchants>>> = ({
+    signal,
+  }) => listMerchants({ signal, ...requestOptions });
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof listMerchants>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export function useListMerchants<
+  TData = Awaited<ReturnType<typeof listMerchants>>,
+  TError = ErrorType<unknown>,
+>(options?: {
+  query?: UseQueryOptions<
+    Awaited<ReturnType<typeof listMerchants>>,
+    TError,
+    TData
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getListMerchantsQueryOptions(options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
 /**
  * @summary List available products
  */

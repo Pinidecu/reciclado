@@ -25,6 +25,7 @@ import ScanQRPage from "@/pages/merchant/scan-qr";
 import MerchantProfilePage from "@/pages/merchant/profile";
 
 import NotFoundPage from "@/pages/not-found";
+import "leaflet/dist/leaflet.css";
 
 // Configure auth token getter so all API calls include JWT
 setAuthTokenGetter(() => localStorage.getItem("ra_token"));

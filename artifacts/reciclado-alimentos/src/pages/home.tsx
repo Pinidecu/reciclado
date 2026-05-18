@@ -41,7 +41,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20 lg:py-28 overflow-hidden">
+      <section className="relative min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/5 py-20 lg:py-28 overflow-hidden ">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
